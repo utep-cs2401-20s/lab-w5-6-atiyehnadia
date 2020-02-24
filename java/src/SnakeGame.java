@@ -4,6 +4,10 @@ public class SnakeGame {
     private static int exhaustiveChecks;
     private static int recursiveChecks;
 
+    public static void main (String [] args){
+
+    }
+
     public SnakeGame(){
         game = new boolean[1][1];
 
@@ -27,6 +31,7 @@ public class SnakeGame {
         for(int i = 0; i < game.length; i++ ){
             for (int j = 0; j< game.length; j++){
                 if(game[i][j] == isSnake){
+                    snakeNeighbors(i,j);
                    length++;
                    exhaustiveChecks++;
 
@@ -39,23 +44,20 @@ public class SnakeGame {
 
     }
 
-    public int snakeNeighbors(){
+    public int snakeNeighbors(int row, int col){
         int snakeyBois = 0;
         boolean isSnake;
-            for (int i = 0; i <= row + 1; i++) {
-                for (int j = col - 1; j <= col + 1; j++) {
-                    if (i >= 0 && i < previous.length) {
-                        if (j >= 0 && j < previous[i].length) {
-                            if (previous[i][j] == alive) {
-                                if (i != row || j != col) {
-                                    aliveNeighbors++;
-                                }
-                            }
-                        }
+        for(int i = row ; i <= game.length; i++){
+            for(int j = col ; j <= game[i].length; j++){
+                if(game[i][j] == isSnake){
+                    if(i != row || j != col){
+                        snakeyBois++;
                     }
                 }
+
             }
-            return aliveNeighbors;
+        }
+        return snakeyBois;
     }
 
 
