@@ -4,118 +4,188 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class SnakeGameTester {
-//    @Test
-//    public void testFindTailExauhstive1(){
-//        // Tests the method with normal outputs that should give the tail position of the snake
-//        // Assumes the board is square and the head position is at the starting postion of the array(0,0)
-//        boolean [][] A = {{true, true, true, true, true},
-//                          {false, false, false, false, true},
-//                          {true, true, true, true, true},
-//                          {true, false, false, false, false},
-//                          {true, true, true, true, true}};
-//        SnakeGame sol = new SnakeGame(A,0,0);
-//        // expected output --> {4,4} and a length of 17 which is printed as the method is done looping
-//        int[] B = {4,4};
-//        assertArrayEquals(B, sol.findTailExhaustive());
-//    }
-//
-//    @Test
-//    public void testFindTailExauhstive2(){
-//        // Tests the method with normal inputs that should give the tail position of the snake
-//        // Assumes the board is square and the head position is at a different starting point in the array (1,4)
-//        // and that it has neighbors before the starting point.
-//        boolean [][] A = {{true, true, true, true, true},
-//                          {false, false, false, false, true},
-//                          {true, true, true, true, true},
-//                          {true, false, false, false, false},
-//                          {true, true, true, true, true}};
-//        SnakeGame sol = new SnakeGame(A,1,4);
-//        // expected output --> {4,4} and a length of 17 since the snake is starts before the starting point that is being evaluated
-//        int[] B = {4,4};
-//        assertArrayEquals(B, sol.findTailExhaustive());
-//        //Shows us that the program needs to be modified to handle a case where the point in the snake that is being looked at is not the head position
-//        // and identifies the head and tail positions in this case.
-//    }
-//    @Test
-//    public void testFindTailExauhstive3(){
-//        // Tests the method with normal inputs that should give the tail position of the snake
-//        // Assumes the board is square and the head position is at the start of the array (0,0)
-//        // and that the tail of the snake hits another part of the snake
-//        boolean [][] A = {{true, true, true, true, true},
-//                          {false, false, true, false, true},
-//                          {true, true, true, false, true},
-//                          {true, false, false, false, true},
-//                          {true, true, true, true, true}};
-//        SnakeGame sol = new SnakeGame(A,0,0);
-//        // expected output --> {2,2} and a length of 19 since the snake is starts before the starting point that is being evaluated
-//        // *expected to fail*
-//        int[] B = {2,2};
-//        assertArrayEquals(B, sol.findTailExhaustive());
-//        //Shows us that the program needs to be able to handle a case where if the tail position hits another part of the
-//        //snake it will return the last position it was true.
-//    }
-//    @Test
-//    public void testFindTailExauhstive4(){
-//        // Tests the method with normal inputs that should give the tail position of the snake
-//        // Assumes the board is square and the head position is at starting position in array(0,0)
-//        // and that the board has multiple snakes that have various different tail positions
-//        boolean [][] A = {{true, true, true, true, true, true, true, true},
-//                          {false, false, false, false, false, false, false, false},
-//                          {true, true, true, true, true, false, false, false},
-//                          {true, false, false, false, false, false, false, false},
-//                          {true, true, true, true, true, true, true, true},
-//                          {false, false, false, false, false, false, false, false},
-//                          {true, true, true, true, true ,true, true, false},
-//                          {false, false, false, false, false, true, false, false}};
-//        SnakeGame sol = new SnakeGame(A,0,0);
-//        // expected output --> {0,4} and a length of 8 since the snake that is being evaluated has a starting head position at (0,0)
-//        // and should only take that snake and give the tail position of that specific snake
-//        // expected to fail
-//        int[] B = {0,7};
-//        assertArrayEquals(B, sol.findTailExhaustive());
-//        //Shows us that the program needs to be modified to be able to handle more than one snake, or needs to specify to the user
-//        // that only one continuous snake can be used to play the game.
-//    }
-//
-//    @Test
-//    //EDGE CASE
-//    public void testFindTailExauhstive5() {
-//        // Tests the method with abnormal inputs that should not give the tail position of the snake
-//        // Assumes the board is not square and the head position is at the starting point (0,0)
-//        // Tests with ragged Array, and with neighbors in the space where there is supposed to be a gap
-//        boolean[][] A = {{true, true, true, true, true},
-//                         {false, false, true, false},
-//                         {true, true, true, true},
-//                         {true, false, false, false, false},
-//                         {true, true, true}};
-//        SnakeGame sol = new SnakeGame(A, 1, 4);
-//        // expected output --> {0,4} and a length of 5 since the snake has multiple snakes within the array and the one being evaluated is the first one
-//        // *expected to fail with OutOfBoundsExcpetion*
-//        int[] B = {0, 4};
-//        fail();
-//        //Shows us that the program needs to be modified to handle a case the array is ragged, and/or needs to inform the user that an input such as this will not work
-//        // Also shows us that in order for the game to work properly there must be a one cell gap between each row of snake
-//    }
-//
-//    @Test
-//    //EDGE CASE
-//    public void testFindTailExauhstive5() {
-//        // Tests the method with abnormal inputs that should not give the tail position of the snake
-//        // Assumes the board is not square and the head position is at the starting point (0,0)
-//        // Tests with ragged Array, and with neighbors in the space where there is supposed to be a gap
-//        boolean[][] A = {{true, true, true, true, true},
-//                {false, false, true, false},
-//                {true, true, true, true},
-//                {true, false, false, false, false},
-//                {true, true, true}};
-//        SnakeGame sol = new SnakeGame(A, 1, 4);
-//        // expected output --> {0,4} and a length of 5 since the snake has multiple snakes within the array and the one being evaluated is the first one
-//        // *expected to fail with OutOfBoundsExcpetion*
-//        int[] B = {0, 4};
-//        fail();
-//        //Shows us that the program needs to be modified to handle a case the array is ragged, and/or needs to inform the user that an input such as this will not work
-//        // Also shows us that in order for the game to work properly there must be a one cell gap between each row of snake
-//    }
+    /* Exhaustive Method */
+    @Test
+    public void testFindTailExauhstive1(){
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting position of the array(0,0)
+        boolean [][] A = {{true, true, true, true, true},
+                          {false, false, false, false, true},
+                          {true, true, true, true, true},
+                          {true, false, false, false, false},
+                          {true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A,0,0);
+        // expected output --> {4,4} and a length of 17
+        int [] B = {4,4,17};
+        assertArrayEquals(B, sol.findTailExhaustive());
+    }
+
+    @Test
+    public void testFindTailExauhstive2(){
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at a different starting point in the array (1,3).
+        boolean [][] A = {{false, false, false, false, false},
+                          {false, false, false, true, false},
+                          {true, true, true, true, false},
+                          {true, false, false, false, false},
+                          {true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A,1,3);
+        // expected output --> {4,4} and a length of 11
+        int[] B = {4,4,11};
+        assertArrayEquals(B, sol.findTailExhaustive());
+        // Shows that even if the head position is not at the starting position of the array it will still find the length and tail position of the snake
+    }
+    @Test
+    public void testFindTailExauhstive3(){
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the start of the array (0,0)
+        // and that the tail of the snake hits another part of the snake
+        boolean [][] A = {{true, true, true, true, true},
+                          {false, false, false, false, true},
+                          {true, true, true, true, true},
+                          {true, false, false, false, true},
+                          {true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A,0,0);
+        // expected output --> {-1,-1} and a length of 18
+        int[] B = {-1,-1,18};
+        assertArrayEquals(B, sol.findTailExhaustive());
+        //Shows us that the method is able to handle the rules of the game, so that if the tail hits another part of the snake it will
+        //default to the initialization of the array that the method returns
+    }
+    @Test
+    public void testFindTailExauhstive4(){
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at starting position in array(0,0),
+        // tests it with a slightly bigger more complex board
+        boolean [][] A = {{true, false, true, true, true, false, false, false, false, false},
+                          {true, false, true, false, true, false, false, false, true, true},
+                          {true, false, true, false, true, false, false, false, true, false},
+                          {true, false, true, false, true, false, false, false, true, false},
+                          {true, false, true, false, true, false, false, false, true, false},
+                          {true, false, true, false, true, false, true, true, true, false},
+                          {true, false, true, false, true, false, true, false, false, false},
+                          {true, false, true, false, true, false, true, false, false, false},
+                          {true, false, true, false, true, false, true, false, false, false},
+                          {true, true, true, false, true, true, true, false, false, false}};
+
+        SnakeGame sol = new SnakeGame(A,0,0);
+        // expected output --> {1,9} and a length of 45
+        int[] B = {1,9,45};
+        assertArrayEquals(B, sol.findTailExhaustive());
+    }
+
+    @Test
+    //EDGE CASE
+    public void testFindTailExauhstive5() {
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting point (0,0)
+        // Tests starting at position that is false
+        boolean[][] A = {{true, true, true, true, true, true},
+                         {false, false, false, false, false, true},
+                         {false, false, false, false, false, true},
+                         {false, false, false, false, false, true},
+                         {false, false, false, false, false, true},
+                         {false, false, false, true, true, true}};
+        SnakeGame sol = new SnakeGame(A, 1, 0);
+        // expected output --> {5, 3} and a length of 13
+        int[] B = {5, 3, 13};
+        assertArrayEquals(B, sol.findTailExhaustive());
+        // Shows that even if the array starts evaluating from a false position it will still find the snake
+        // and return the tail position
+    }
+
+    /* Recursive Method */
+
+    @Test
+    public void testFindTailRecursive1() {
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting point (0,0)
+        boolean [][] A = {{true, true, true, true, true},
+                          {false, false, false, false, true},
+                          {true, true, true, true, true},
+                          {true, false, false, false, false},
+                          {true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A,0,0);
+        // expected output --> {4,4} and a length of 17
+        int [] C = {4,4,17};
+        assertArrayEquals(C, sol.findTailRecursive());
+    }
+
+    @Test
+    public void testFindTailRecursive2() {
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting point (1,2)
+        // Tests starting at position that is false
+        boolean[][] A = {{true, true, true, true, true},
+                         {false, false, false, false, true},
+                         {true, true, true, true, true},
+                         {true, false, false, false, false},
+                         {true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A, 1, 2);
+        // expected output --> {4,4} and a length of 17
+        int[] B = {4, 4, 17};
+        assertArrayEquals(B, sol.findTailRecursive());
+        //Shows that even if it starts evaluating at a position that is not true it will
+        // still find the snake and return the tail position
+    }
+
+    @Test
+    public void testFindTailRecursive3() {
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting point (4,4)
+        // Test if the method works backwards
+        boolean[][] A = {{true, true, true, true, true},
+                         {false, false, false, false, true},
+                         {true, true, true, true, true},
+                         {true, false, false, false, false},
+                         {true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A, 4, 4);
+        // expected output --> {0,0} and a length of 17
+        int[] B = {0, 0, 17};
+        assertArrayEquals(B, sol.findTailRecursive());
+        //Shows that even if it starts evaluating at a position that is not the start of the array it will still work
+    }
+
+    @Test
+    public void testFindTailRecursive4() {
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting point (0,0)
+        // Test if the method works with bigger more complex games
+        boolean [][] A = {{true, false, true, true, true, false, true, true, true, false},
+                          {true, false, true, false, true, false, true, false, true, false},
+                          {true, false, true, false, true, false, true, false, true, false},
+                          {true, false, true, false, true, false, false, false, true, false},
+                          {true, false, true, false, true, false, false, false, true, false},
+                          {true, false, true, false, true, false, true, true, true, false},
+                          {true, false, true, false, true, false, true, false, false, false},
+                          {true, false, true, false, true, false, true, false, false, false},
+                          {true, false, true, false, true, false, true, false, false, false},
+                          {true, true, true, false, true, true, true, false, false, false}};
+        SnakeGame sol = new SnakeGame(A, 0, 0);
+        // expected output --> {0,8} and a length of 49
+        int[] B = {2, 6,49};
+        assertArrayEquals(B, sol.findTailRecursive());
+    }
+
+
+    //EDGE CASE
+    @Test
+    public void testFindTailRecursive5() {
+        // Tests the method with normal inputs that should give the tail position of the snake
+        // Assumes the board is square and the head position is at the starting point (0,0)
+        // and that the tail position hits another part of the snake
+        boolean[][] A = {{true, true, true, true, true, true},
+                         {false, false, false, false, false, true},
+                         {false, false, false, true, true, true},
+                         {false, true, true, true, false, true},
+                         {false, true, false, false, false, true},
+                         {false, true, true, true, true, true}};
+        SnakeGame sol = new SnakeGame(A, 0, 0);
+        // expected output --> {0,0} and length of 21
+        int[] B = {0,0,21};
+        assertArrayEquals(B, sol.findTailRecursive());
+        //Shows that if the tail position of the snake hits another part of the snake it will default to position {0,0}
+    }
 
 
 }
